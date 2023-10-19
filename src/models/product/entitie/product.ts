@@ -1,15 +1,9 @@
 import { Category } from 'src/models/category/entitie/category';
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, Column, ManyToOne, JoinColumn, PrimaryColumn } from 'typeorm';
 
 @Entity('product')
 export class Product {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   codigo: number;
 
   @Column()
