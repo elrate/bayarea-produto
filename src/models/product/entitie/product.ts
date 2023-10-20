@@ -9,7 +9,7 @@ export class Product {
   @Column()
   name: string;
 
-  @Column({ name: 'category_id' })
+  @Column({ name: 'id_category' })
   idCategory: number;
 
   @Column()
@@ -22,6 +22,6 @@ export class Product {
   registro_fiscal: string;
 
   @ManyToOne(() => Category, (category: Category) => category.products)
-  @JoinColumn({ name: 'category_id', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'id_category', referencedColumnName: 'id' })
   category?: Category;
 }
