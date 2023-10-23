@@ -11,39 +11,43 @@ import {
 } from '@nestjs/common';
 import { Product } from './entitie/product';
 import { ProductService } from './product.service';
+import { ReturnProductDto } from './dto/return-producto.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get()
-  async getAllProducts(): Promise<Product[]> {
+  async getAllProducts(): Promise<ReturnProductDto[]> {
     return this.productService.getAllProducts();
   }
 
-  @Get(':codigo')
-  async getProductByCodigo(@Param('codigo') codigo: number): Promise<Product> {
+  @Get(':id')
+  async getProductByCodigo(
+    @Param('id') codigo: number,
+  ): Promise<ReturnProductDto> {
     return this.productService.getProductById(codigo);
   }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async createProduct(@Body() product: Product): Promise<Product> {
+  async createProduct(@Body() product: CreateProductDto): Promise<Product> {
     return this.productService.createProduct(product);
   }
 
-  @Put(':codigo')
+  @Put(':id')
   @HttpCode(HttpStatus.OK)
   async updateProduct(
-    @Param('codigo') codigo: number,
-    @Body() updatedProduct: Product,
+    @Param('id') id: number,
+    @Body() updatedProduct: CreateProductDto,
   ): Promise<Product> {
-    return this.productService.updateProduct(codigo, updatedProduct);
+    return this.productService.updateProduct(id, updatedProduct);
   }
 
-  @Delete(':codigo')
+  @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async deleteProduct(@Param('codigo') codigo: number): Promise<void> {
-    return this.productService.deleteProduct(codigo);
+  async deleteProduct(@Param('id') id: number): Promise<void> {
+    return this.productService.deleteProduct(id);
   }
 }

@@ -6,8 +6,7 @@ export class CreateCategoryTable1675766852242 implements MigrationInterface {
       CREATE TABLE category (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
       );
     `);
   }

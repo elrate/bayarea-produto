@@ -4,14 +4,17 @@ export class CreateProductTable1675766852243 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.query(`
       CREATE TABLE product (
-        codigo INTEGER PRIMARY KEY,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
+        brand TEXT NOT NULL,
+        description TEXT NOT NULL,
+        supplier TEXT NOT NULL,
+        product_code TEXT NOT NULL,
         id_category INTEGER NOT NULL,
-        unidade_de_medida TEXT NOT NULL,
+        unit_of_measure TEXT NOT NULL,
         price REAL NOT NULL,
-        registro_fiscal TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+        fiscal_registration INTEGER NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
       );
     `);
   }
